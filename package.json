@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kawecz.github.io/obsidian_vault",
+  "homepage": "https://kawecz.github.io/Obsidian-Vault",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
