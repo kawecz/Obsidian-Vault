@@ -39,7 +39,7 @@ function DownloadButton() {
             */}
             <a 
                 href={fileUrl} 
-                download="Kultivi.zip"
+                download="kultivi.zip"
                 className={Styles.btn}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
