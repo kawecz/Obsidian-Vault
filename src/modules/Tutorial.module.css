@@ -1,0 +1,12 @@
+.tutorial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4em;
+    margin-bottom: 5em;
+}
+
+.tutorial h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}

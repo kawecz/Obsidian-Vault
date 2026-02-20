@@ -1,0 +1,32 @@
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    
+    
+}
+.btn > a {
+    color: #fff;
+}
+.btn:hover {
+   background: #2d5a2e;
+   border-radius: 2em;
+   
+}
+
+.btn {
+  background-image: linear-gradient(to right, #AA076B 0%, #61045F 51%, #AA076B 100%);
+}
+
+.btn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}

@@ -1,0 +1,46 @@
+.div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    /* Added perspective to make the GSAP rotationX look 3D */
+    perspective: 1200px; 
+}
+
+.div > h2 {
+    margin-top: 4em;
+    margin-bottom: 2em;
+    color: var(--color1); /* Using your variables from App.css */
+    font-size: 2.5rem;
+}
+
+.div p {
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+.div ul {
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+/* Specific styling for your vault image */
+.div img {
+    margin-top: 2em;
+    border-radius: 2em;
+    max-width: 650px;
+    width: 100%; /* Ensures responsiveness */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color3);
+    /* Improves rendering during GSAP transforms */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+/* Optional: targeted link styling inside the about section */
+.div a {
+    color: var(--color3);
+    text-decoration: underline;
+}

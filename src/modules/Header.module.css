@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 2px solid #0F0140;
+    padding: 3em;
+}
+.header > h1 {
+  background-image: linear-gradient(to right, #AA076B 0%, #61045F 51%, #AA076B 100%);
+}
+
+.header > h1{
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  outline: none;
+  border: none;
+}
+
+.header > h1:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
