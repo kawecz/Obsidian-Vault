@@ -8,16 +8,18 @@ function Header() {
     const headerRef = useRef();
 
     useGSAP(() => {
-        // Timeline allows you to chain animations if you want to add more later
         const tl = gsap.timeline();
 
-        tl.from("h1", { 
-            y: -100,            // Drop down from above
+        // 1. Make sure we target the h1 inside our headerRef scope
+        tl.from(headerRef.current.querySelector('h1'), { 
+            y: -100,
             opacity: 0, 
-            scale: 0.8,         // Start slightly smaller
-            filter: "blur(10px)", // Start blurry and sharpen up
+            scale: 0.8,
+            filter: "blur(10px)",
             duration: 1.5, 
-            ease: "elastic.out(1, 0.75)" // A cool, springy bounce
+            ease: "elastic.out(1, 0.75)",
+            // This ensures the h1 returns to its normal CSS state after animating
+            onComplete: () => gsap.set(headerRef.current.querySelector('h1'), { clearProps: "all" })
         });
         
     }, { scope: headerRef });

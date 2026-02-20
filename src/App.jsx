@@ -1,21 +1,22 @@
-
 import './App.css'
 import About from './pages/About'
 import Main from './components/Main';
 import Header from './components/Header';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// We swap BrowserRouter for HashRouter
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   
   return (
     <>
+      {/* HashRouter ignores the GitHub sub-folder and finds your routes correctly */}
       <Router>
-        <Header></Header>
+        <Header />
         <Routes>
-          {/* Added a Home route so the page isn't empty on load */}
-          <Route path ="/about" element={<About />} />
-          <Route path='/' element={<Main />} />
+          {/* Main will now load correctly on the first visit */}
+          <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
         </Routes>
-        
       </Router>
     </>
   )

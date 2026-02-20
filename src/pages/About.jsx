@@ -4,8 +4,8 @@ import { useGSAP } from '@gsap/react';
 import Styles from '../modules/About.module.css';
 
 function About() {
-    // Vite looks into the public folder automatically with a leading slash
-    const kultivi_vault_img = "/kultivi_vault.png";
+    // FIX: Using BASE_URL ensures GitHub Pages finds the image in the /Obsidian-Vault/ subfolder
+    const kultivi_vault_img = `${import.meta.env.BASE_URL}kultivi_vault.png`;
     const container = useRef();
 
     useGSAP(() => {
@@ -23,12 +23,13 @@ function About() {
             scale: 0.9, 
             duration: 1.2, 
             ease: "power4.out" 
-        }, "-=0.5"); // Starts slightly before the text finishes
+        }, "-=0.5");
 
     }, { scope: container });
 
     return (
-        <div ref={container} className={Styles.div}>
+        /* Added perspective here so the rotationX looks realistic */
+        <div ref={container} className={Styles.div} style={{ perspective: '1000px' }}>
             <h2>About the Obsidian Vault</h2>
             <p>This is my personal Obsidian vault for the course from the platform 
                 <a href="https://kultivi.com/" target="_blank" rel="noreferrer">
@@ -43,7 +44,11 @@ function About() {
             </ul>
             <p>Here's a print from the vault:</p>
             <div className={Styles.imgContainer}>
-                <img src={kultivi_vault_img} alt="Vault Screenshot" className={Styles.vaultImg} />
+                <img 
+                    src={kultivi_vault_img} 
+                    alt="Vault Screenshot" 
+                    className={Styles.vaultImg} 
+                />
             </div>
         </div>
     );
