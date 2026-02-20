@@ -8,7 +8,7 @@ function DownloadButton() {
     const { contextSafe } = useGSAP({ scope: container });
 
     // This dynamically creates the correct path: /Obsidian-Vault/Kultivi.zip
-    const fileUrl = `${import.meta.env.BASE_URL}Kultivi.zip`;
+    const fileUrl = `${import.meta.env.BASE_URL}kultivi.zip`;
 
     const onMouseEnter = contextSafe(() => {
         gsap.to(`.${Styles.btn}`, {
