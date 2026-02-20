@@ -13,3 +13,22 @@
 
 
 
+/* Main.module.css */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* Changed from height to min-height */
+    padding: 5em;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .main {
+        padding: 2em 1em;
+    }
+    
+    .main h1 {
+        font-size: 1.8rem;
+    }
+}

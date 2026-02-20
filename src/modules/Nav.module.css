@@ -30,3 +30,18 @@
   color: #fff;
   text-decoration: none;
 }
+
+@media (max-width: 768px) {
+    .nav {
+        margin-right: 0;
+        padding: 1em;
+        gap: 0.5em;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .nav a {
+        padding: 10px 15px;
+        font-size: 0.8rem;
+    }
+}
