@@ -7,7 +7,7 @@ function DownloadButton() {
     const container = useRef();
     const { contextSafe } = useGSAP({ scope: container });
 
-    // This dynamically creates the correct path: /Obsidian-Vault/Kultivi.zip
+    // This dynamically creates the correct path: /Obsidian-Vault/Kultivi-ingles.zip
     const fileUrl = `${import.meta.env.BASE_URL}kultivi.zip`;
 
     const onMouseEnter = contextSafe(() => {
@@ -33,13 +33,14 @@ function DownloadButton() {
     });
 
     return (
+        <>
         <div ref={container} style={{ display: 'inline-block' }}>
             {/* CHANGE: We use <a> as the main element. 
                Putting <a> inside <button> is invalid HTML and breaks the link.
             */}
             <a 
                 href={fileUrl} 
-                download="kultivi.zip"
+                download="kultivi-ingles.zip"
                 className={Styles.btn}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
@@ -48,9 +49,46 @@ function DownloadButton() {
                     display: 'inline-block' 
                 }}
             >
-                Download
+                Download - English 
             </a>
         </div>
+        <div ref={container} style={{ display: 'inline-block' }}>
+            {/* CHANGE: We use <a> as the main element. 
+               Putting <a> inside <button> is invalid HTML and breaks the link.
+            */}
+            <a 
+                href={fileUrl} 
+                download="kultivi-frances.zip"
+                className={Styles.btn}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                style={{ 
+                    textDecoration: 'none', 
+                    display: 'inline-block' 
+                }}
+            >
+                Download - French
+            </a>
+        </div>
+        <div ref={container} style={{ display: 'inline-block' }}>
+            {/* CHANGE: We use <a> as the main element. 
+               Putting <a> inside <button> is invalid HTML and breaks the link.
+            */}
+            <a 
+                href={fileUrl} 
+                download="kultivi-espanhol.zip"
+                className={Styles.btn}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                style={{ 
+                    textDecoration: 'none', 
+                    display: 'inline-block' 
+                }}
+            > 
+                Download - Spanish
+            </a>
+        </div>
+        </>
     );
 }
 
