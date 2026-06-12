@@ -10,15 +10,13 @@ function Header() {
     useGSAP(() => {
         const tl = gsap.timeline();
 
-        // 1. Make sure we target the h1 inside our headerRef scope
         tl.from(headerRef.current.querySelector('h1'), { 
-            y: -100,
+            y: -50,
             opacity: 0, 
-            scale: 0.8,
-            filter: "blur(10px)",
-            duration: 1.5, 
-            ease: "elastic.out(1, 0.75)",
-            // This ensures the h1 returns to its normal CSS state after animating
+            scale: 0.9,
+            filter: "blur(8px)",
+            duration: 1.2, 
+            ease: "power3.out",
             onComplete: () => gsap.set(headerRef.current.querySelector('h1'), { clearProps: "all" })
         });
         
@@ -32,4 +30,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Header;

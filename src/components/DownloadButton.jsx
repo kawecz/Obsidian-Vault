@@ -1,17 +1,15 @@
-import { useRef } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import Styles from '../modules/DownloadButton.module.css';
 
 function DownloadButton() {
-    const container = useRef();
-    const { contextSafe } = useGSAP({ scope: container });
+    // Dynamically creating unique paths for each language file
+    const englishFileUrl = `${import.meta.env.BASE_URL}kultivi-ingles.zip`;
+    const frenchFileUrl = `${import.meta.env.BASE_URL}kultivi-frances.zip`;
+    const spanishFileUrl = `${import.meta.env.BASE_URL}kultivi-espanhol.zip`;
 
-    // This dynamically creates the correct path: /Obsidian-Vault/Kultivi-ingles.zip
-    const fileUrl = `${import.meta.env.BASE_URL}kultivi.zip`;
-
-    const onMouseEnter = contextSafe(() => {
-        gsap.to(`.${Styles.btn}`, {
+    // Target the specific button element being hovered via event.currentTarget
+    const onMouseEnter = (e) => {
+        gsap.to(e.currentTarget, {
             scale: 1.05,
             y: -3,
             backgroundColor: "#1a1a1a",
@@ -19,10 +17,10 @@ function DownloadButton() {
             ease: "power2.out",
             overwrite: "auto"
         });
-    });
+    };
 
-    const onMouseLeave = contextSafe(() => {
-        gsap.to(`.${Styles.btn}`, {
+    const onMouseLeave = (e) => {
+        gsap.to(e.currentTarget, {
             scale: 1,
             y: 0,
             backgroundColor: "",
@@ -30,65 +28,48 @@ function DownloadButton() {
             ease: "elastic.out(1, 0.5)",
             overwrite: "auto"
         });
-    });
+    };
 
     return (
-        <>
-        <div ref={container} style={{ display: 'inline-block' }}>
-            {/* CHANGE: We use <a> as the main element. 
-               Putting <a> inside <button> is invalid HTML and breaks the link.
-            */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px', alignItems: 'center' }}>
+            
+            {/* English Button */}
             <a 
-                href={fileUrl} 
+                href={englishFileUrl} 
                 download="kultivi-ingles.zip"
                 className={Styles.btn}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                style={{ 
-                    textDecoration: 'none', 
-                    display: 'inline-block' 
-                }}
+                style={{ textDecoration: 'none', display: 'inline-block' }}
             >
                 Download - English 
             </a>
-        </div>
-        <div ref={container} style={{ display: 'inline-block' }}>
-            {/* CHANGE: We use <a> as the main element. 
-               Putting <a> inside <button> is invalid HTML and breaks the link.
-            */}
+
+            {/* French Button */}
             <a 
-                href={fileUrl} 
+                href={frenchFileUrl} 
                 download="kultivi-frances.zip"
                 className={Styles.btn}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                style={{ 
-                    textDecoration: 'none', 
-                    display: 'inline-block' 
-                }}
+                style={{ textDecoration: 'none', display: 'inline-block' }}
             >
                 Download - French
             </a>
-        </div>
-        <div ref={container} style={{ display: 'inline-block' }}>
-            {/* CHANGE: We use <a> as the main element. 
-               Putting <a> inside <button> is invalid HTML and breaks the link.
-            */}
+
+            {/* Spanish Button */}
             <a 
-                href={fileUrl} 
+                href={spanishFileUrl} 
                 download="kultivi-espanhol.zip"
                 className={Styles.btn}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                style={{ 
-                    textDecoration: 'none', 
-                    display: 'inline-block' 
-                }}
+                style={{ textDecoration: 'none', display: 'inline-block' }}
             > 
                 Download - Spanish
             </a>
+            
         </div>
-        </>
     );
 }
 

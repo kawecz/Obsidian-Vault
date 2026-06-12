@@ -4,29 +4,77 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-
 function Nav() {
     const navRef = useRef();
 
     useGSAP(() => {
-        // Targets all 'li' tags inside our navRef
+        // Smooth entrance slide-in for the nav items
         gsap.from("li", { 
-            x: 200,          // Start 100px to the right
-            opacity: 0,      // Start invisible
-            duration: 1,     // Animation length
-            stagger: 0.1,    // Delay between each link
-            ease: "power3.out" // Smooth deceleration
+            x: 50,          
+            opacity: 0,      
+            duration: 1,     
+            stagger: 0.1,    
+            ease: "power4.out",
+            delay: 0.2
         });
     }, { scope: navRef });
-    return(
+
+    // Interactive Hover & Click Animations
+    const handleMouseEnter = (e) => {
+        gsap.to(e.currentTarget, {
+            y: -2,
+            color: "#a855f7", // Smooth color change to purple on hover
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    };
+
+    const handleMouseLeave = (e) => {
+        gsap.to(e.currentTarget, {
+            y: 0,
+            color: "", // Resets back to your CSS file default
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    };
+
+    const handleMouseDown = (e) => {
+        gsap.to(e.currentTarget, { scale: 0.95, duration: 0.1 });
+    };
+
+    const handleMouseUp = (e) => {
+        gsap.to(e.currentTarget, { scale: 1, duration: 0.1 });
+    };
+
+    return (
         <nav ref={navRef} style={{ overflow: 'hidden' }}>
             <ul className={Styles.nav}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><a href="https://github.com/kawecz" target='blank'>Contact</a></li>
+                <li>
+                    <Link to="/" 
+                          onMouseEnter={handleMouseEnter} 
+                          onMouseLeave={handleMouseLeave}
+                          onMouseDown={handleMouseDown}
+                          onMouseUp={handleMouseUp}>Home</Link>
+                </li>
+                <li>
+                    <Link to="/about" 
+                          onMouseEnter={handleMouseEnter} 
+                          onMouseLeave={handleMouseLeave}
+                          onMouseDown={handleMouseDown}
+                          onMouseUp={handleMouseUp}>About</Link>
+                </li>
+                <li>
+                    <a href="https://github.com/kawecz" 
+                       target='_blank' 
+                       rel="noreferrer"
+                       onMouseEnter={handleMouseEnter} 
+                       onMouseLeave={handleMouseLeave}
+                       onMouseDown={handleMouseDown}
+                       onMouseUp={handleMouseUp}>Contact</a>
+                </li>
             </ul>
         </nav>
-    )
+    );
 }
 
-export default Nav
+export default Nav;
